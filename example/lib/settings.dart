@@ -68,10 +68,12 @@ class SettingsTypeAhead extends StatelessWidget
                   ),
                 );
               } else {
-                return ListTile(
-                  key: ValueKey(setting.value),
-                  leading: Icon(setting.icon),
-                  title: Text(setting.title),
+                return IgnorePointer(
+                  child: ListTile(
+                    key: ValueKey(setting.value),
+                    leading: Icon(setting.icon),
+                    title: Text(setting.title),
+                  ),
                 );
               }
             },
@@ -79,6 +81,8 @@ class SettingsTypeAhead extends StatelessWidget
             listBuilder: settings.gridLayout.value ? gridLayoutBuilder : null,
             onSelected: onSuggestionSelected,
             suggestionsCallback: suggestionsCallback,
+            constrainWidth: settings.constrainWidth.value,
+            offset: const Offset(-12, 5),
           ),
         ),
       ],
@@ -161,6 +165,8 @@ class CupertinoSettingsTypeAhead extends StatelessWidget
             listBuilder: settings.gridLayout.value ? gridLayoutBuilder : null,
             onSelected: onSuggestionSelected,
             suggestionsCallback: suggestionsCallback,
+            constrainWidth: settings.constrainWidth.value,
+            offset: const Offset(-12, 5),
           ),
         ),
       ],
