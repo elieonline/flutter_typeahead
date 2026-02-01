@@ -16,13 +16,12 @@ class SuggestionsFieldKeyboardConnector<T> extends StatelessWidget {
   final Widget child;
   final bool hideWithKeyboard;
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return ConnectorWidget(
-      // [KeyboardVisibilityController] is a singleton.
       value: KeyboardVisibilityController(),
-      connect: (value) => value.onChange.listen((visible) {
-        if (!visible && hideWithKeyboard) {
+      connect: (value) => value.onChange.listen((status) {
+        if (status == KeyboardVisibilityStatus.notVisible && hideWithKeyboard) {
           controller.close();
         }
       }),
@@ -30,4 +29,5 @@ class SuggestionsFieldKeyboardConnector<T> extends StatelessWidget {
       child: child,
     );
   }
+
 }

@@ -20,7 +20,7 @@ void main() {
 
     testWidgets('closes suggestions box when keyboard is hidden',
         (WidgetTester tester) async {
-      KeyboardVisibilityTesting.setVisibilityForTesting(true);
+      KeyboardVisibilityTesting.setVisibilityForTesting(KeyboardVisibilityStatus.visible);
       controller.open();
 
       await tester.pumpWidget(
@@ -35,7 +35,7 @@ void main() {
         ),
       );
 
-      KeyboardVisibilityTesting.setVisibilityForTesting(false);
+      KeyboardVisibilityTesting.setVisibilityForTesting(KeyboardVisibilityStatus.notVisible);
 
       await tester.pump();
 
@@ -45,7 +45,7 @@ void main() {
     testWidgets(
         'does not close suggestions box when keyboard is hidden and hideOnUnfocus is false',
         (WidgetTester tester) async {
-      KeyboardVisibilityTesting.setVisibilityForTesting(true);
+      KeyboardVisibilityTesting.setVisibilityForTesting(KeyboardVisibilityStatus.visible);
       controller.open();
 
       await tester.pumpWidget(
@@ -60,7 +60,7 @@ void main() {
         ),
       );
 
-      KeyboardVisibilityTesting.setVisibilityForTesting(false);
+      KeyboardVisibilityTesting.setVisibilityForTesting(KeyboardVisibilityStatus.notVisible);
 
       await tester.pump();
 
