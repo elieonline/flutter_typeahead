@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:flutter_keyboard_visibility_fork/flutter_keyboard_visibility.dart';
 import 'package:flutter_typeahead/src/common/base/connector_widget.dart';
 import 'package:flutter_typeahead/src/common/base/suggestions_controller.dart';
 
@@ -16,12 +16,12 @@ class SuggestionsFieldKeyboardConnector<T> extends StatelessWidget {
   final Widget child;
   final bool hideWithKeyboard;
 
- @override
+  @override
   Widget build(BuildContext context) {
     return ConnectorWidget(
       value: KeyboardVisibilityController(),
       connect: (value) => value.onChange.listen((status) {
-        if (status == KeyboardVisibilityStatus.notVisible && hideWithKeyboard) {
+        if (!status && hideWithKeyboard) {
           controller.close();
         }
       }),
@@ -29,5 +29,4 @@ class SuggestionsFieldKeyboardConnector<T> extends StatelessWidget {
       child: child,
     );
   }
-
 }

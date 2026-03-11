@@ -24,10 +24,7 @@ abstract final class TypeAheadCupertinoDefaults {
     message = 'Error: $error';
     return Padding(
       padding: const EdgeInsets.all(8),
-      child: Text(
-        message,
-        style: const TextStyle(color: CupertinoColors.destructiveRed),
-      ),
+      child: Text(message, style: const TextStyle(color: CupertinoColors.destructiveRed)),
     );
   }
 
@@ -39,19 +36,14 @@ abstract final class TypeAheadCupertinoDefaults {
       child: Text(
         'No Items Found!',
         textAlign: TextAlign.start,
-        style: TextStyle(
-          color: CupertinoColors.inactiveGray,
-          fontSize: 18,
-        ),
+        style: TextStyle(color: CupertinoColors.inactiveGray, fontSize: 18),
       ),
     );
   }
 
   /// A Wrapper around the item builder of a CupertinoTypeAheadField.
   /// Provides the functionality to select an item on tap.
-  static SuggestionsItemBuilder<T> itemBuilder<T>(
-    SuggestionsItemBuilder<T> builder,
-  ) {
+  static SuggestionsItemBuilder<T> itemBuilder<T>(SuggestionsItemBuilder<T> builder) {
     return (context, item) {
       final controller = SuggestionsController.of<T>(context);
       return ListenableBuilder(
@@ -66,9 +58,7 @@ abstract final class TypeAheadCupertinoDefaults {
           }
           return Container(
             decoration: BoxDecoration(
-              color: highlighted
-                  ? CupertinoColors.systemGrey4.withOpacity(0.5)
-                  : null,
+              color: highlighted ? CupertinoColors.systemGrey4.withValues(alpha: 0.5) : null,
               borderRadius: const BorderRadius.all(Radius.circular(12)),
             ),
             child: FocusableActionDetector(
@@ -87,9 +77,7 @@ abstract final class TypeAheadCupertinoDefaults {
 
   /// A Wrapper around the suggestions box of a CupertinoTypeAheadField.
   /// Adds various Cupertino specific decorations.
-  static SuggestionsItemBuilder<Widget> wrapperBuilder(
-    DecorationBuilder? builder,
-  ) {
+  static SuggestionsItemBuilder<Widget> wrapperBuilder(DecorationBuilder? builder) {
     return (context, child) {
       return DefaultTextStyle(
         style: CupertinoTheme.of(context).textTheme.textStyle,
@@ -99,18 +87,12 @@ abstract final class TypeAheadCupertinoDefaults {
   }
 
   /// The default decoration builder used by a CupertinoTypeAheadField.
-  static Widget decorationBuilder(
-    BuildContext context,
-    Widget child,
-  ) {
+  static Widget decorationBuilder(BuildContext context, Widget child) {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: CupertinoTheme.of(context).barBackgroundColor.withAlpha(255),
         border: Border.all(
-          color: CupertinoDynamicColor.resolve(
-            CupertinoColors.systemGrey4,
-            context,
-          ),
+          color: CupertinoDynamicColor.resolve(CupertinoColors.systemGrey4, context),
           width: 1,
         ),
         borderRadius: const BorderRadius.all(Radius.circular(6)),
@@ -120,14 +102,7 @@ abstract final class TypeAheadCupertinoDefaults {
   }
 
   /// The default text field builder used by a CupertinoTypeAheadField.
-  static Widget builder(
-    BuildContext context,
-    TextEditingController controller,
-    FocusNode node,
-  ) {
-    return CupertinoTextField(
-      controller: controller,
-      focusNode: node,
-    );
+  static Widget builder(BuildContext context, TextEditingController controller, FocusNode node) {
+    return CupertinoTextField(controller: controller, focusNode: node);
   }
 }
