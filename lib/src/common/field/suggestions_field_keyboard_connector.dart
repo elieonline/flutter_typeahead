@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_keyboard_visibility_fork/flutter_keyboard_visibility.dart';
+import 'package:flutter_keyboard_visibility_plus/flutter_keyboard_visibility_plus.dart';
 import 'package:flutter_typeahead/src/common/base/connector_widget.dart';
 import 'package:flutter_typeahead/src/common/base/suggestions_controller.dart';
 

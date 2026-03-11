@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_keyboard_visibility_fork: ^0.0.2
+  flutter_keyboard_visibility_plus: ^7.0.0
   pointer_interceptor: ^0.9.3+7
 
 dev_dependencies:
